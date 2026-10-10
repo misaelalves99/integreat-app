@@ -40,6 +40,14 @@ describe('Failure', () => {
     expect(queryByText('error:tryAgain')).toBeNull()
   })
 
+  it('should provide horizontal padding for error messages', () => {
+    const { getByText } = renderFailure()
+
+    expect(getByText('error:unknownError')).toHaveStyle({
+      paddingHorizontal: 28,
+    })
+  })
+
   it('should show the error code as message', () => {
     const { getByText } = renderFailure()
     expect(getByText(`error:unknownError`)).toBeTruthy()
